@@ -1,0 +1,19 @@
+.flexbox {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .left {
+    background-color: lightblue;
+    width: 50px;
+  }
+  
+  .center {
+    background-color: lightpink;
+    flex: 1;
+  }
+  
+  .right {
+    background-color: lightblue;
+    width: 75px;
+  }
