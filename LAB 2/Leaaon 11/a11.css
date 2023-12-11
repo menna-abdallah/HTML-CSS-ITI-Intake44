@@ -1,0 +1,9 @@
+.grid {
+    display: grid;
+    grid-template-columns: 200px 75px;
+  }
+  
+  div div  {
+    background-color: lightblue;
+  }
+  
