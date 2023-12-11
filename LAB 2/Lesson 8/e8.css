@@ -1,0 +1,34 @@
+  
+  .title {
+    font-family: Arial;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    display: block;
+    background-color: rgb(240, 240, 240);
+    border: none;
+    margin-bottom: 10px;
+    width: 350px;
+    padding-left: 15px;
+    height: 50px;
+    font-size: 16px;
+  }
+  button{
+    margin-top:25px;
+    width:150px;
+    height: 50px;
+    border: none;
+    font-size: 16px;
+  }
+  .request-btn {
+    background-color: black;
+    color: white;
+    margin-right: 20px;
+  }
+  
+  .schedule-btn {
+    background-color: rgb(240, 240, 240);
+   
+  }

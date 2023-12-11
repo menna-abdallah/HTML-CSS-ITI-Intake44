@@ -1,0 +1,30 @@
+
+*{
+    font-family: Arial;
+    font-size: 14px;
+    color: rgb(129, 129, 129);
+}
+
+  #email {
+    font-size: 16px;
+    width: 350px;
+    border: 2px solid rgb(104, 104, 104);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .agree {
+    margin-bottom: 20px;
+  }
+  
+  .join-btn {
+    background-color: rgb(38, 121, 204);
+    color: white;
+    border: none;
+    width: 350px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 30px;
+  }

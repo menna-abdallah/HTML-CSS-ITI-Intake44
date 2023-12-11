@@ -1,0 +1,22 @@
+* {
+    font-family: Arial;
+    margin:0px;
+  }
+  
+  .card {
+    background-color: rgb(33, 33, 33);
+    width: 360px;
+    padding:5px 10px 15px 10px;
+  }
+  
+  .p-1 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0px;
+  }
+  
+  .p-2 {
+    margin: 5px 0px ;
+    color: rgb(160, 160, 160);
+  }

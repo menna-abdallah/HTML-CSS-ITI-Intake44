@@ -1,0 +1,24 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#price{
+ font-weight: bold;
+ font-size: 30px;
+ margin-bottom: 0px;
+}
+.discount{
+color: green;
+margin-top: 0px;
+}
+#p{
+color: grey;
+}
+
+#span1{
+color:grey;
+font-size: 20px;
+}
+
+#span2{
+color:red;
+}
