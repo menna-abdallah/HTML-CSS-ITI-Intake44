@@ -1,0 +1,77 @@
+div {
+    font-family: Arial;
+  }
+  
+  .tweet {
+    display: flex;
+    flex-direction: row;
+    width: 420px;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+  
+  .pic-colum {
+    margin-right: 10px;
+  }
+  
+  .pic {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  
+  .tweeter {
+    flex: 1;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+  }
+  
+  .owner {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .at {
+    color: rgb(111, 111, 111);
+  }
+  
+  .content {
+    line-height: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(200, 200, 200);
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .video {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(220, 220, 220);
+    margin-right: 10px;
+  }
+  
+  .info {
+    flex: 1;
+  }
+  
+  .video-name {
+    color: rgb(111, 111, 111);
+    margin-bottom: 3px;
+  }
+  
+  .video-title {
+    line-height: 22px;
+  }
