@@ -1,0 +1,38 @@
+body {
+    height: 3000px;
+    font-family: Arial;
+  }
+  
+  .right-sidebar {
+    background-color: green;
+    color: white;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+  }
+  
+  .overlay 
+  {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .modal {
+    background-color: white;
+    width: 300px;
+    margin: auto;
+    padding:15px;
+    border-radius: 5px;
+  }
+  
+  .modal-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
