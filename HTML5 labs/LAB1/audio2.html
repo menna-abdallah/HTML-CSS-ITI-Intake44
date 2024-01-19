@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1 test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        section {
+            text-align: center;
+            background-image: url("images/ground.jpg");
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+
+        img {
+            margin-top: 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .volume-label {
+            font-size: 0.8em;
+            margin-top: 10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .volume-icon {
+            margin-right: 5px;
+        }
+
+        button {
+            font-size: 1em;
+            margin: 10px;
+            padding: 8px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="range"] {
+            width: 80%;
+            margin: 5px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <img id="image" src="images/1.jpg" alt="Song 1">
+        <audio id="audio" loop>
+            <source src="resources/1.mp3" />
+            Please update your browser.
+        </audio><br>
+        <!-- meter as progress -->
+        <div class="progres-label">
+            <input type="range" min="0" max="" step=""  id="progress" value="0" />
+        </div>     
+        <button id="play"><i class="fas fa-play"></i></button>
+        <button id="pause"><i class="fas fa-pause"></i></button>
+        <button id="stop"><i class="fas fa-stop"></i></button>
+        <button id="mute"><i class="fas fa-volume-mute"></i></button>
+        <div class="volume-label">
+            <i style="color: #fff;" class="fas fa-volume-down volume-icon"></i>
+            <input type="range" min="0" max="1" step=".1" id="volume" value="0" />
+            <i style="color: #fff;" class="fas fa-volume-up volume-icon"></i>
+        </div>
+        <input type="range" min="0" id="duration" value="0" />
+        <button id="prev"><i class="fas fa-step-backward"></i></button>
+        <button id="next"><i class="fas fa-step-forward"></i></button>
+        <button id="shuffle"><i class="fas fa-random"></i></button>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+    <script>
+        
+        
+        const audio = document.getElementById('audio');
+        const image = document.getElementById('image');
+        const progressBar = document.getElementById('progress');
+        const btnPlay = document.getElementById('play');
+        const btnPause = document.getElementById('pause');
+        const btnStop = document.getElementById('stop');
+        const btnMute = document.getElementById('mute');
+        const volumeRange = document.getElementById('volume');
+        const durationRange = document.getElementById('duration');
+        const btnShuffle = document.getElementById('shuffle');
+        const btnNext = document.getElementById('next');
+        const btnPrev = document.getElementById('prev');
+        
+        let currentSongIndex = 0;
+        // get songs and images
+        const songs = [
+            { src: 'resources/1.mp3', img: 'images/1.jpg' },
+            { src: 'resources/2.mp3', img: 'images/2.jpg' },
+            { src: 'resources/3.mp3', img: 'images/3.jpg' },
+            { src: 'resources/4.mp3', img: 'images/4.jpg' },
+        ];
+        function loadSong(index) {
+            audio.src = songs[index].src;
+            image.src = songs[index].img;
+            audio.load();
+        }
+
+        loadSong(currentSongIndex);
+
+        // controls 
+
+        btnPlay.addEventListener('click', function () {
+            audio.play();
+        });
+
+        btnPause.addEventListener('click', function () {
+            audio.pause();
+        });
+        
+        btnStop.addEventListener('click', function () {
+            audio.load();
+            audio.pause();
+        });
+
+        btnMute.addEventListener('click', function () {
+            audio.muted = !audio.muted;
+        });
+        
+        btnShuffle.addEventListener('click', function () {
+            currentSongIndex = Math.floor(Math.random() * songs.length);
+            loadSong(currentSongIndex);
+            audio.play();
+        });
+
+        btnNext.addEventListener('click', function () {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+            audio.play();
+        });
+
+        btnPrev.addEventListener('click', function () {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+            audio.play();
+        });
+        volumeRange.addEventListener('input', function () {
+            audio.volume = volumeRange.value;
+        });
+
+        // initialize meters (progress and duration)
+        window.addEventListener('load', function () {
+            //console.log(progressBar.value)
+            progressBar.value = 0;
+            audio.addEventListener('loadedmetadata', function () {
+                durationRange.max = audio.duration;
+                progressBar.max = audio.duration;
+            });
+        });
+
+        durationRange.addEventListener('input', function () {
+            audio.currentTime = durationRange.value;
+            progressBar.value = durationRange.value;
+        });
+
+
+        audio.addEventListener('timeupdate', function () {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            //console.log(progress)
+            progressBar.value = progress;
+
+        });
+
+        progressBar.addEventListener('input', function (event) {
+            const clickPosition = event.target.value;
+            const percentage = clickPosition / 100;
+            const seekTime = percentage * audio.duration;
+            audio.currentTime = seekTime;
+            durationRange.value = seekTime;
+        });
+    </script>
+</body>
+</html>
