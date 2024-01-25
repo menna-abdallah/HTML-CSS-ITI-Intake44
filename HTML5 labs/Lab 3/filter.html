@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="filter.css">
+</head>
+<body>
+    <div id="parent"></div>
+    <div class="btns">
+        <button class="filter">Default</button>
+        <button class="filter">Gray Scale</button>
+        <button class="filter">Sepia</button>
+        <button class="filter">Invert</button>
+        <button class="filter">Opacity</button>
+        <button class="filter">Saturate</button>
+    </div>
+    <script>
+        var image = document.getElementById("parent");
+        var btn = document.getElementsByClassName("filter");
+        console.log(btn);
+        btn[0].addEventListener('click',function(){
+            image.style.filter = "unset";
+        });
+        btn[1].addEventListener('click',function(){
+            image.style.filter = "grayscale(1)";
+        });
+        btn[2].addEventListener('click',function(){
+            image.style.filter = "sepia(100%)";
+        });
+        btn[3].addEventListener('click',function(){
+            image.style.filter = "invert(100%)";
+        });
+        btn[4].addEventListener('click',function(){
+            image.style.filter = "opacity(30%)";
+        });
+        btn[5].addEventListener('click',function(){
+            image.style.filter = "saturate(7)";
+        });
+        
+
+    </script>
+</body>
+</html>

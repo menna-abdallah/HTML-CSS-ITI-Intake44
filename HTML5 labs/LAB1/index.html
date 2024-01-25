@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab 1</title>
+</head>
+<body>
+    <form>
+        <!-- start q.1 -->
+
+        <h1>
+            Change Email Address
+        </h1>
+        <input type="text" id="username" name="username" placeholder="UserName" pattern="[a-zA-Z]{8,28}" required autocomplete="off">    
+        <p style="margin-top: 0px;">The required username may only be a series of alphabetical characters</p>
+        <input type="email" name="email" placeholder="Email" pattern="[a-zA-Z0-9]{5}@(gmail|yahoo).com" required autocomplete="on">
+        <p style="margin-top: 0px;">The required Email Address may not include any special characters other than the @ sign</p>
+        <button value="Change" type="submit">Change</button>
+
+        <!-- end q.1 -->
+    </form>
+</form>
+
+<script>
+    const fields = document.querySelectorAll('input[name^="username"], input[name="email"]');
+    fields.forEach(field => {
+        //console.log (field);
+        field.addEventListener('invalid', function (event) {
+            if (event.target.validity.valueMissing) {
+                if (field.name === "username")
+                {
+                    event.target.setCustomValidity('Tell us how to call you.');
+                }
+                else
+                {
+                    event.target.setCustomValidity('Email Address is required.');
+                }
+            }
+            if (event.target.validity.patternMismatch) {
+                field.value="";
+                if (field.name === "username")
+                {
+                    event.target.setCustomValidity('User name must be alphabitic letters only.');
+                }
+                else{
+                    event.target.setCustomValidity('Incorrect email formate');
+                }
+            }
+        });
+
+        field.addEventListener('change', function (event) {
+            event.target.setCustomValidity('');
+        });
+    });
+
+    // end fields validation
+</script>
+</body>
+</html>

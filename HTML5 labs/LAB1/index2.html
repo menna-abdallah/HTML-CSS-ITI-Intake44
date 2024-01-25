@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1</title>
+
+    <style>
+        progress{
+            appearance: none;
+        }
+        progress::-webkit-progress-bar{
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 0 3px rgb(202, 184, 184) inset;
+
+
+        }
+        progress::-webkit-progress-value{
+            background-color: rgb(255, 0, 0);
+        }
+      
+
+    </style>
+    
+</head>
+<body>
+    <form>
+        <!-- color text-->
+        <p>
+        <label for="reb">Red</label>
+        <input type="range" id="red" name="red" min="0" max="255" value="0" step="3"/> 
+        </p>
+        <p>
+        <label for="green">Green</label> 
+        <input type="range" id="green" name="green" min="0" max="255" value="0"/> 
+        </p>
+        <p>
+        <label for="blue">Blue</label>
+        <input type="range" id="blue" name="blue" min="0" max="255" value="0"/> 
+        </p>
+        <p id ="colored">
+            This paragraph color will be change try and specify your favourity style
+        </p>
+
+        <!-- end -->
+
+        <br>
+        <br>
+        <!-- start number and rang sum-->
+
+        <input type="number" id="number" min="0" value="0" max="10"/>
+        <input type="range" id ="range" min="0" max="10" value="5"/> 
+        <button id="print">0</button>
+
+        <!-- end -->
+        <br>
+        <br>
+        <!-- start progress -->
+        <progress id="progress" min="0" max="100" value="0"></progress>
+        <span>0</span>
+
+
+    </form>
+
+    <script>
+
+        var progress = document.getElementById("progress");
+        console.log(progress.value)
+        var span = document.getElementsByTagName("span");
+        var count=0;
+        function countProgress(){
+          if(count<=100){
+            progress.value=count;
+            span[0].innerHTML= `${progress.value}%`
+            count+=10;
+          }
+          setTimeout(countProgress,500);
+        }
+        countProgress();
+        
+        // start color range
+
+        const rangered = document.getElementById('red');
+        const rangegreen = document.getElementById('green');
+        const rangeblue = document.getElementById('blue');
+
+        //console.log(rangeblue)
+
+        const sampleText = document.getElementById('colored');
+
+           rangered.addEventListener('input', setcolor);
+           rangegreen.addEventListener('input', setcolor);
+           rangeblue.addEventListener('input', setcolor);
+
+           
+           function setcolor () {
+            // Set the text color based on the range value
+            const redValue = rangered.value;
+            const greenValue = rangegreen.value;
+            const blueValue = rangeblue.value;
+
+            const textColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+            colored.style.color = textColor;
+        };
+
+            // number & range
+
+            const number = document.getElementById("number");
+        const range = document.getElementById("range");
+        const print = document.getElementById("print");
+        
+        number.addEventListener('change' , function(){
+            var res = number.valueAsNumber + parseInt(range.value);
+           // console.log(res);
+            print.innerHTML = res;
+        });
+
+
+        // progress & print
+
+
+    </script>
+</body>
+</html>

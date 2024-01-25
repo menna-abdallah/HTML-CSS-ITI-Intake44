@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #img {
+      height: 100px;
+      width: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: moveAnimation 4s linear infinite;
+      top : 100px
+    }
+    .circlediv{
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    background-color: rgb(57, 192, 136);
+    color: white;
+    margin-bottom: 60px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation-name: circlerotate;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+    @keyframes circlerotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+    @keyframes moveAnimation {
+      0%, 15% {
+        left: 0;
+        transform: scaleX(1);
+      }
+      50%{
+        left: calc(100% - 100px);
+        transform: scaleX(1);
+
+      }
+      60%, 75% {
+        left: calc(100% - 100px);
+        transform: scaleX(-1);
+      }
+
+      100% {
+        left: 0;
+        transform: scaleX(-1);
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="circlediv">
+        <p>لف وارجع تاني</p>
+    </div>
+  <img id="img" src="images/Pngtree.png" alt="">
+</body>
+</html>

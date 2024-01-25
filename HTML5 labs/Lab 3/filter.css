@@ -1,0 +1,28 @@
+#parent{
+    height: 500px;
+    width: 650px;
+    background-image: url(images/thankful-businessman-with-open-arms-field_254268-363.jpg),url(images/bird.avif),url(images/sun.avif);
+    background-blend-mode:multiply;
+    filter:unset;
+    background-repeat: no-repeat;
+    margin: auto;
+    margin-top:60px;
+}
+.filter{
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(191, 181, 181);
+    margin-left: 10px;
+}
+
+.filter:hover{
+    background-color: rgb(104, 192, 210);
+    cursor: pointer;
+    
+}
+.btns{
+text-align: center;
+}
+
